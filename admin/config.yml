@@ -18,7 +18,6 @@ collections:
         fields:
           - { label: "Homepage Hero Background Image", name: "hero_background", widget: "image" }
           - { label: "Our Story Image", name: "about_image", widget: "image" }
-          - { label: "Why Choose Us Section Image", name: "why_choose_image", widget: "image" }
           - { label: "Top Gallery Strip — Photo 1", name: "gallery_1", widget: "image" }
           - { label: "Top Gallery Strip — Photo 2", name: "gallery_2", widget: "image" }
           - { label: "Top Gallery Strip — Photo 3", name: "gallery_3", widget: "image" }

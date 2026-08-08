@@ -1,7 +1,7 @@
 // Decap CMS Custom Preview Templates & Styling
 
 CMS.registerPreviewStyle('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Playfair+Display:wght@400;700&display=swap');
-CMS.registerPreviewStyle('/css/style.css');
+CMS.registerPreviewStyle('../css/style.css');
 
 CMS.registerPreviewStyle(`
   body {
@@ -30,13 +30,15 @@ function getImgUrl(getAsset, val, fallback) {
   if (!val) return fallback || '';
   try {
     var asset = getAsset(val);
-    if (!asset) return (typeof val === 'string' && val.indexOf('/') === 0) ? val : '/' + val;
-    var str = (typeof asset.toString === 'function') ? asset.toString() : (asset.url || asset);
-    if (str && typeof str === 'string') {
-      return str;
+    if (asset) {
+      var str = (typeof asset.toString === 'function') ? asset.toString() : (asset.url || asset);
+      if (str && typeof str === 'string') return str;
     }
   } catch (e) {}
-  return (typeof val === 'string' && val.indexOf('/') === 0) ? val : '/' + val;
+  var path = typeof val === 'string' ? val : '';
+  var clean = path.replace(/^\/+/, '');
+  var prefix = window.location.pathname.includes('/website/') ? '/website/' : '/';
+  return prefix + clean;
 }
 
 // 1. Home Page Images Preview
@@ -45,28 +47,27 @@ function HomepagePreview(props) {
   var getAsset = props.getAsset;
   var data = entry.get('data') ? entry.get('data').toJS() : {};
 
-  var heroBg = getImgUrl(getAsset, data.hero_background, '/uploads/moohan-masters.webp');
-  var aboutImg = getImgUrl(getAsset, data.about_image, '/uploads/moohan-masters.webp');
-  var whyChooseImg = getImgUrl(getAsset, data.why_choose_image, '/uploads/why-choose-us.jpg');
+  var heroBg = getImgUrl(getAsset, data.hero_background, '../uploads/moohan-masters.webp');
+  var aboutImg = getImgUrl(getAsset, data.about_image, '../uploads/kids-martial-arts.jpg');
 
-  var gallery1 = getImgUrl(getAsset, data.gallery_1, '/uploads/kid-tiger-hero.jpg');
-  var gallery2 = getImgUrl(getAsset, data.gallery_2, '/uploads/kids-martial-arts.jpg');
-  var gallery3 = getImgUrl(getAsset, data.gallery_3, '/uploads/moohan-masters.webp');
+  var gallery1 = getImgUrl(getAsset, data.gallery_1, '../uploads/kid-tiger-hero.jpg');
+  var gallery2 = getImgUrl(getAsset, data.gallery_2, '../uploads/kids-martial-arts.jpg');
+  var gallery3 = getImgUrl(getAsset, data.gallery_3, '../uploads/moohan-masters.webp');
 
-  var progCard1 = getImgUrl(getAsset, data.program_card_1, '/uploads/kid-tiger-hero.jpg');
-  var progCard2 = getImgUrl(getAsset, data.program_card_2, '/uploads/kids-martial-arts.jpg');
-  var progCard3 = getImgUrl(getAsset, data.program_card_3, '/uploads/moohan-masters.webp');
+  var progCard1 = getImgUrl(getAsset, data.program_card_1, '../uploads/kid-tiger-hero.jpg');
+  var progCard2 = getImgUrl(getAsset, data.program_card_2, '../uploads/kids-martial-arts.jpg');
+  var progCard3 = getImgUrl(getAsset, data.program_card_3, '../uploads/moohan-masters.webp');
 
-  var gallery4 = getImgUrl(getAsset, data.gallery_4, '/uploads/moohan-masters.webp');
-  var gallery5 = getImgUrl(getAsset, data.gallery_5, '/uploads/kid-tiger-hero.jpg');
-  var gallery6 = getImgUrl(getAsset, data.gallery_6, '/uploads/kids-martial-arts.jpg');
-  var taekwondoBg = getImgUrl(getAsset, data.taekwondo_background, '/uploads/moohan-masters.webp');
+  var gallery4 = getImgUrl(getAsset, data.gallery_4, '../uploads/moohan-masters.webp');
+  var gallery5 = getImgUrl(getAsset, data.gallery_5, '../uploads/kid-tiger-hero.jpg');
+  var gallery6 = getImgUrl(getAsset, data.gallery_6, '../uploads/kids-martial-arts.jpg');
+  var taekwondoBg = getImgUrl(getAsset, data.taekwondo_background, '../uploads/moohan-masters.webp');
 
   return h('div', { className: 'cms-preview-wrapper' },
     h('nav', { className: 'navbar', style: { position: 'relative', background: '#1a1a2e' } },
       h('div', { className: 'container' },
         h('a', { className: 'nav-brand', href: '#' },
-          h('img', { src: '/uploads/moohan-logo.png', alt: 'Logo', width: 52, height: 52 }),
+          h('img', { src: '../uploads/moohan-logo.png', alt: 'Logo', width: 52, height: 52 }),
           h('div', { className: 'nav-brand-text' }, h('strong', null, 'MOOHAN MARTIAL ARTS'), 'SANDY SPRINGS')
         )
       )
@@ -165,9 +166,9 @@ function KidTigerPreview(props) {
   var getAsset = props.getAsset;
   var data = entry.get('data') ? entry.get('data').toJS() : {};
 
-  var heroImg = getImgUrl(getAsset, data.hero_image, '/uploads/kid-tiger-hero.jpg');
-  var overviewImg = getImgUrl(getAsset, data.overview_image || data.body_image, '/uploads/kids-martial-arts.jpg');
-  var benefitsImg = getImgUrl(getAsset, data.benefits_image, '/uploads/kid-tiger-hero.jpg');
+  var heroImg = getImgUrl(getAsset, data.hero_image, '../uploads/kid-tiger-hero.jpg');
+  var overviewImg = getImgUrl(getAsset, data.overview_image || data.body_image, '../uploads/kids-martial-arts.jpg');
+  var benefitsImg = getImgUrl(getAsset, data.benefits_image, '../uploads/kid-tiger-hero.jpg');
 
   return h('div', { className: 'cms-preview-wrapper' },
     h('section', { className: 'page-hero', style: { minHeight: '300px', backgroundImage: 'linear-gradient(135deg, rgba(15,15,35,0.85), rgba(26,26,46,0.7)), url("' + heroImg + '")', backgroundSize: 'cover', backgroundPosition: 'center' } },
@@ -205,9 +206,9 @@ function JuniorTkdPreview(props) {
   var getAsset = props.getAsset;
   var data = entry.get('data') ? entry.get('data').toJS() : {};
 
-  var heroImg = getImgUrl(getAsset, data.hero_image, '/uploads/kids-martial-arts.jpg');
-  var overviewImg = getImgUrl(getAsset, data.overview_image || data.body_image, '/uploads/kid-tiger-hero.jpg');
-  var benefitsImg = getImgUrl(getAsset, data.benefits_image, '/uploads/kids-martial-arts.jpg');
+  var heroImg = getImgUrl(getAsset, data.hero_image, '../uploads/kids-martial-arts.jpg');
+  var overviewImg = getImgUrl(getAsset, data.overview_image || data.body_image, '../uploads/kid-tiger-hero.jpg');
+  var benefitsImg = getImgUrl(getAsset, data.benefits_image, '../uploads/kids-martial-arts.jpg');
 
   return h('div', { className: 'cms-preview-wrapper' },
     h('section', { className: 'page-hero', style: { minHeight: '300px', backgroundImage: 'linear-gradient(135deg, rgba(15,15,35,0.85), rgba(26,26,46,0.7)), url("' + heroImg + '")', backgroundSize: 'cover', backgroundPosition: 'center' } },
@@ -245,9 +246,9 @@ function AdultFamilyPreview(props) {
   var getAsset = props.getAsset;
   var data = entry.get('data') ? entry.get('data').toJS() : {};
 
-  var heroImg = getImgUrl(getAsset, data.hero_image, '/uploads/moohan-masters.webp');
-  var overviewImg = getImgUrl(getAsset, data.overview_image || data.body_image, '/uploads/why-choose-us.jpg');
-  var benefitsImg = getImgUrl(getAsset, data.benefits_image, '/uploads/moohan-masters.webp');
+  var heroImg = getImgUrl(getAsset, data.hero_image, '../uploads/moohan-masters.webp');
+  var overviewImg = getImgUrl(getAsset, data.overview_image || data.body_image, '../uploads/why-choose-us.jpg');
+  var benefitsImg = getImgUrl(getAsset, data.benefits_image, '../uploads/moohan-masters.webp');
 
   return h('div', { className: 'cms-preview-wrapper' },
     h('section', { className: 'page-hero', style: { minHeight: '300px', backgroundImage: 'linear-gradient(135deg, rgba(15,15,35,0.85), rgba(26,26,46,0.7)), url("' + heroImg + '")', backgroundSize: 'cover', backgroundPosition: 'center' } },
@@ -285,11 +286,11 @@ function SummerCampPagePreview(props) {
   var getAsset = props.getAsset;
   var data = entry.get('data') ? entry.get('data').toJS() : {};
 
-  var heroImg = getImgUrl(getAsset, data.hero_image, '/uploads/kid-tiger-hero.jpg');
-  var bodyImg = getImgUrl(getAsset, data.body_image, '/uploads/kid-tiger-hero.jpg');
-  var gal1 = getImgUrl(getAsset, data.gallery_1, '/uploads/kid-tiger-hero.jpg');
-  var gal2 = getImgUrl(getAsset, data.gallery_2, '/uploads/kids-martial-arts.jpg');
-  var gal3 = getImgUrl(getAsset, data.gallery_3, '/uploads/moohan-masters.webp');
+  var heroImg = getImgUrl(getAsset, data.hero_image, '../uploads/kid-tiger-hero.jpg');
+  var bodyImg = getImgUrl(getAsset, data.body_image, '../uploads/kid-tiger-hero.jpg');
+  var gal1 = getImgUrl(getAsset, data.gallery_1, '../uploads/kid-tiger-hero.jpg');
+  var gal2 = getImgUrl(getAsset, data.gallery_2, '../uploads/kids-martial-arts.jpg');
+  var gal3 = getImgUrl(getAsset, data.gallery_3, '../uploads/moohan-masters.webp');
 
   return h('div', { className: 'cms-preview-wrapper' },
     h('section', { className: 'page-hero', style: { minHeight: '300px', backgroundImage: 'linear-gradient(135deg, rgba(15,15,35,0.85), rgba(26,26,46,0.7)), url("' + heroImg + '")', backgroundSize: 'cover', backgroundPosition: 'center' } },
@@ -319,7 +320,7 @@ function SchedulePreview(props) {
   var getAsset = props.getAsset;
   var data = entry.get('data') ? entry.get('data').toJS() : {};
 
-  var pdfFile = getImgUrl(getAsset, data.schedule_pdf, '/uploads/schedule.pdf');
+  var pdfFile = getImgUrl(getAsset, data.schedule_pdf, '../uploads/schedule.pdf');
 
   return h('div', { className: 'cms-preview-wrapper' },
     h('section', { style: { padding: '40px 20px', textAlign: 'center', background: '#18182c', color: '#fff' } },
