@@ -178,7 +178,7 @@ async function handleFormSubmit(event) {
   }
   
   try {
-    const response = await fetch('https://formsubmit.co/ajax/moohansandysprings@gatech.edu', {
+    const response = await fetch('https://formsubmit.co/ajax/moohansandysprings@gmail.com', {
       method: 'POST',
       body: formData,
       headers: {
