@@ -1,0 +1,131 @@
+{
+  "programs": [
+    {
+      "id": "kid-tiger",
+      "title": "Kid Tiger",
+      "age_range": "Ages 4-5",
+      "page_headline": "MARTIAL ARTS FOR KIDS AGES 4-5 IN SANDY SPRINGS",
+      "short_description": "Developing confidence, focus, and physical coordination through fun, tailored Taekwondo classes for ages 4-5.",
+      "full_description": "The Kids Tiger Program, designed for children aged 4 to 5, focuses on developing confidence, focus, and physical coordination through tailored Taekwondo classes. In a fun and safe environment, children learn basic Taekwondo techniques while also building essential life skills like discipline and respect. This program encourages active learning and helps young kids grow both mentally and physically in a structured, positive setting.",
+      "cover_image": "uploads/kid-tiger-hero.jpg",
+      "detail_hero_image": "uploads/kid-tiger-hero.jpg",
+      "detail_body_image": "uploads/kids-martial-arts.jpg",
+      "why_choose_title": "Why Choose Taekwondo for Your Child?",
+      "highlights": [
+        {
+          "title": "Improves Focus and Concentration",
+          "text": "Taekwondo requires children to pay attention to instructions and master specific techniques, which helps improve their focus and concentration both in class and in everyday activities."
+        },
+        {
+          "title": "Builds Confidence",
+          "text": "As children progress through the ranks and achieve new belts, they experience a sense of accomplishment that boosts their self-esteem and confidence in their abilities."
+        },
+        {
+          "title": "Teaches Discipline and Respect",
+          "text": "Taekwondo instills core values like discipline, respect for others, and self-control, helping children learn how to follow directions and treat peers and teachers with respect."
+        }
+      ],
+      "benefits_title": "Taekwondo for Kids 4-5",
+      "benefits_text": "Taekwondo offers significant benefits for children aged 4-5, focusing on their physical, mental, and emotional development. At this age, kids are rapidly developing motor skills, and Taekwondo's structured movements help improve coordination and balance. The practice also enhances focus and listening skills, teaching young children to follow directions and concentrate on tasks. Additionally, Taekwondo builds self-confidence as children achieve new milestones, encouraging a positive sense of accomplishment and personal growth.",
+      "bullet_list": [
+        {
+          "title": "Enhances Motor Skills",
+          "text": "Taekwondo helps young children improve their coordination, balance, and fine motor skills through structured movements and exercises tailored to their developmental stage."
+        },
+        {
+          "title": "Encourages Focus and Listening",
+          "text": "Children learn to follow directions, stay focused during class, and concentrate on their tasks, skills that can positively impact their behavior at home and school."
+        },
+        {
+          "title": "Builds Self-Confidence",
+          "text": "As they learn new techniques and achieve milestones, children experience a sense of accomplishment, which helps them feel more confident in their abilities and decision-making."
+        }
+      ],
+      "join_text": "Experience the benefits of Taekwondo at Sandy Springs. Whether you're looking to get in shape, learn self-defense, or gain confidence, Moohan Martial Arts is the place for you. Contact us to schedule your first class and begin your journey towards black belt excellence."
+    },
+    {
+      "id": "junior-tkd",
+      "title": "Junior TKD",
+      "age_range": "Ages 6-12",
+      "page_headline": "MARTIAL ARTS FOR KIDS AGES 6-12 IN SANDY SPRINGS",
+      "short_description": "Building self-confidence, physical fitness, and anti-bullying skills through structured martial arts training.",
+      "full_description": "Empower your child ages 6–12 with our Junior Taekwondo Program in Sandy Springs, Georgia. Through structured martial arts training, students build confidence, discipline, and physical fitness in a fun and supportive environment.\n\nOur experienced instructors help children develop focus, respect, and leadership while progressing at their own pace through goal-setting and belt advancement.\n\nNew and experienced students are welcome. Enroll today for a FREE trial class and watch your child grow.",
+      "cover_image": "uploads/kids-martial-arts.jpg",
+      "detail_hero_image": "uploads/kids-martial-arts.jpg",
+      "detail_body_image": "uploads/kid-tiger-hero.jpg",
+      "why_choose_title": "Why Taekwondo for Kids Ages 6-12?",
+      "highlights": [
+        {
+          "title": "Build Confidence",
+          "text": "As children progress through belt ranks and set personal goals, they gain a sense of achievement that boosts their self-esteem. Success in Taekwondo encourages them to believe in their abilities, both in martial arts and other areas of life."
+        },
+        {
+          "title": "Improve Physical Fitness",
+          "text": "Taekwondo provides a full-body workout that enhances strength, flexibility, coordination, and endurance. Regular practice helps kids stay active and develop lifelong healthy habits."
+        },
+        {
+          "title": "Develop Focus and Discipline",
+          "text": "Learning Taekwondo requires concentration, discipline, and perseverance. These skills not only improve performance in martial arts but also positively impact academic success and personal growth."
+        }
+      ],
+      "benefits_title": "Taekwondo for Kids 6-12 years old",
+      "benefits_text": "Taekwondo offers significant benefits for children aged 6-12, focusing on their physical, mental, and emotional development. At this age, kids are building strength and refining motor skills, and Taekwondo’s dynamic techniques help improve coordination, flexibility, and endurance. The practice also enhances focus and discipline, teaching children to set goals, follow instructions, and concentrate on tasks. Additionally, Taekwondo builds self-confidence as children progress through belt levels, encouraging a positive sense of achievement and personal growth in a supportive environment.",
+      "bullet_list": [
+        {
+          "title": "Increased Self-Discipline",
+          "text": "Taekwondo emphasizes the importance of self-control and discipline, helping children learn to manage their impulses, stay focused on their goals, and follow structured routines both in class and at home."
+        },
+        {
+          "title": "Respect for Peers and Teachers",
+          "text": "One of the core principles of Taekwondo is respect. Children are taught to show respect to their instructors, peers, and themselves. This value extends beyond martial arts and into their everyday interactions, fostering better behavior and social skills."
+        },
+        {
+          "title": "Better Focus and Goal Setting",
+          "text": "Taekwondo encourages kids to concentrate on mastering techniques and achieving belt ranks, which requires setting clear goals and working steadily toward them. This focus translates to better concentration in schoolwork and other activities, improving their ability to stay on task and meet objectives."
+        }
+      ],
+      "join_text": "Experience the benefits of Taekwondo at Sandy Springs. Whether you're looking to get in shape, learn self-defense, or gain confidence, Moohan Martial Arts is the place for you. Contact us to schedule your first class and begin your journey towards black belt excellence."
+    },
+    {
+      "id": "adult-family",
+      "title": "Family/Adult",
+      "age_range": "Teens & Adults",
+      "page_headline": "MARTIAL ARTS FOR FAMILY IN SANDY SPRINGS",
+      "short_description": "Self-defense training combined with total-body fitness, stress relief, and personal growth for all skill levels.",
+      "full_description": "Family Classes – Build Strength, Confidence & Connection Together. Experience the joy of training as a family with our Family Taekwondo Program in Sandy Springs, Georgia. Designed for parents, teens, and kids training side-by-side, this program helps families build stronger bonds through shared activities that improve fitness, flexibility, confidence, and cardiovascular health. With full-body workouts, practical skill development, and a supportive community, our program encourages teamwork, respect, and a healthy, active lifestyle for families of all experience levels.\n\nTaekwondo is more than just a workout—it’s a meaningful way for families to grow stronger together. At Moohan Martial Arts, our Family Taekwondo Class allows parents and children to train side by side in a positive, encouraging environment.\n\nThrough fun, structured, full-body training, families build strength, flexibility, coordination, and endurance—while sharing quality time together. Classes focus on discipline, respect, focus, and communication, helping both children and adults develop healthy habits that carry into daily life.\n\nAs families set goals and progress through the belt system together, each milestone becomes a shared achievement. It’s not just about learning Taekwondo—it’s about building confidence, strengthening bonds, and creating lasting memories as a family.",
+      "cover_image": "uploads/moohan-masters.webp",
+      "detail_hero_image": "uploads/moohan-masters.webp",
+      "detail_body_image": "uploads/why-choose-us.jpg",
+      "why_choose_title": "EXPLORE THE BENEFITS OF TAEKWONDO FOR FAMILY",
+      "highlights": [
+        {
+          "title": "Physical Fitness and Health",
+          "text": "Taekwondo provides comprehensive full-body workouts that boost strength, flexibility, and cardiovascular health. Its varied movements and techniques enhance overall fitness, increase muscle tone, and promote a healthy lifestyle, offering an engaging way to stay active."
+        },
+        {
+          "title": "Stress Relief and Mental Clarity",
+          "text": "Martial arts training is a great way to relieve stress, clear the mind, and promote mental clarity. The combination of physical activity and focused practice reduces anxiety, improves emotional well-being, and brings a sense of balance and calm."
+        },
+        {
+          "title": "Self-Defense and Confidence",
+          "text": "Taekwondo equips individuals with practical self-defense skills that enhance personal safety and preparedness. As participants master techniques and progress through belt levels, they build confidence in their abilities, fostering greater self-assurance and resilience."
+        }
+      ],
+      "bullet_list": [
+        {
+          "title": "Full-Body Workout & Cardiovascular Health",
+          "text": "Improves muscle tone, strength, flexibility, and overall physical wellness for all age groups."
+        },
+        {
+          "title": "Stress Relief & Balance",
+          "text": "Focusing on techniques releases daily stress and builds mental endurance and emotional calm."
+        },
+        {
+          "title": "Practical Self-Defense Skills",
+          "text": "Develops real-world self-defense techniques while boosting overall confidence and personal safety."
+        }
+      ],
+      "join_text": "Experience the benefits of Taekwondo at Sandy Springs. Whether you're looking to get in shape, learn self-defense, or gain confidence, Moohan Martial Arts is the place for you. Contact us to schedule your first class and begin your journey towards black belt excellence."
+    }
+  ]
+}

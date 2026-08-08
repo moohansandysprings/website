@@ -1,0 +1,83 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "uploads"
+public_folder: "uploads"
+
+collections:
+  - name: "homepage_images"
+    label: "Home Page Images"
+    files:
+      - name: "homepage_images"
+        label: "Home Page Images List"
+        file: "content/site_info.json"
+        fields:
+          - { label: "Homepage Hero Background Image", name: "hero_background", widget: "image" }
+          - { label: "Our Story Image", name: "about_image", widget: "image" }
+          - { label: "Why Choose Us Section Image", name: "why_choose_image", widget: "image" }
+          - { label: "Top Gallery Strip — Photo 1", name: "gallery_1", widget: "image" }
+          - { label: "Top Gallery Strip — Photo 2", name: "gallery_2", widget: "image" }
+          - { label: "Top Gallery Strip — Photo 3", name: "gallery_3", widget: "image" }
+          - { label: "Program Card 1 — Kid Tiger Cover Image", name: "program_card_1", widget: "image" }
+          - { label: "Program Card 2 — Junior TKD Cover Image", name: "program_card_2", widget: "image" }
+          - { label: "Program Card 3 — Family/Adult Cover Image", name: "program_card_3", widget: "image" }
+          - { label: "Bottom Gallery Strip — Photo 4", name: "gallery_4", widget: "image" }
+          - { label: "Bottom Gallery Strip — Photo 5", name: "gallery_5", widget: "image" }
+          - { label: "Bottom Gallery Strip — Photo 6", name: "gallery_6", widget: "image" }
+          - { label: "Traditional Taekwondo Background Image", name: "taekwondo_background", widget: "image" }
+
+  - name: "kid_tiger_images"
+    label: "Kid Tiger Page Images (Ages 4-5)"
+    files:
+      - name: "kid_tiger_page"
+        label: "Kid Tiger Page Images"
+        file: "content/kid_tiger_page.json"
+        fields:
+          - { label: "Hero Background Image", name: "hero_image", widget: "image" }
+          - { label: "Program Overview Section Image", name: "overview_image", widget: "image" }
+          - { label: "Detailed Benefits Section Image", name: "benefits_image", widget: "image" }
+
+  - name: "junior_tkd_images"
+    label: "Junior TKD Page Images (Ages 6-12)"
+    files:
+      - name: "junior_tkd_page"
+        label: "Junior TKD Page Images"
+        file: "content/junior_tkd_page.json"
+        fields:
+          - { label: "Hero Background Image", name: "hero_image", widget: "image" }
+          - { label: "Program Overview Section Image", name: "overview_image", widget: "image" }
+          - { label: "Detailed Benefits Section Image", name: "benefits_image", widget: "image" }
+
+  - name: "adult_family_images"
+    label: "Family / Adult Page Images"
+    files:
+      - name: "adult_family_page"
+        label: "Family / Adult Page Images"
+        file: "content/adult_family_page.json"
+        fields:
+          - { label: "Hero Background Image", name: "hero_image", widget: "image" }
+          - { label: "Program Overview Section Image", name: "overview_image", widget: "image" }
+          - { label: "Detailed Benefits Section Image", name: "benefits_image", widget: "image" }
+
+  - name: "summer_camp_images"
+    label: "Summer Camp Page Images"
+    files:
+      - name: "summer_camp_page"
+        label: "Summer Camp Page Images"
+        file: "content/summer_camp_page.json"
+        fields:
+          - { label: "Hero Background Image", name: "hero_image", widget: "image" }
+          - { label: "Program Overview Section Image", name: "body_image", widget: "image" }
+          - { label: "Gallery Strip — Photo 1", name: "gallery_1", widget: "image" }
+          - { label: "Gallery Strip — Photo 2", name: "gallery_2", widget: "image" }
+          - { label: "Gallery Strip — Photo 3", name: "gallery_3", widget: "image" }
+
+  - name: "schedule"
+    label: "Schedule PDF Upload"
+    files:
+      - name: "schedule"
+        label: "Schedule PDF File"
+        file: "content/schedule.json"
+        fields:
+          - { label: "Schedule PDF File", name: "schedule_pdf", widget: "file" }
