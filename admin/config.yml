@@ -2,7 +2,8 @@ backend:
   name: github
   repo: moohansandysprings/website
   branch: main
-  auth_endpoint: api/auth
+  base_url: https://decap-cms-oauth.vercel.app
+  auth_endpoint: auth
 
 media_folder: "uploads"
 public_folder: "uploads"
