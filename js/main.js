@@ -5,6 +5,11 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  const announcement = document.querySelector('.announcement-bar');
+  if (announcement) {
+    loadAnnouncement(announcement);
+  }
+
   // --- Mobile Hamburger Menu ---
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('nav-links');
@@ -146,6 +151,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+
+async function loadAnnouncement(bar) {
+  let data;
+  try {
+    const response = await fetch('./content/announcement.json', { cache: 'no-cache' });
+    if (!response.ok) return;
+    data = await response.json();
+  } catch {
+    return;
+  }
+
+  const message = typeof data?.message === 'string' ? data.message.trim() : '';
+  if (data?.enabled !== true || !message) return;
+
+  const dismissalKey = 'moohan-announcement-dismissed';
+  let dismissed = false;
+  function updateVisibility() {
+    try {
+      dismissed = dismissed || sessionStorage.getItem(dismissalKey) === message;
+    } catch {
+      // Keep dismissal for the current page if browser storage is unavailable.
+    }
+    bar.hidden = dismissed;
+  }
+
+  bar.querySelector('.announcement-message').textContent = message;
+  bar.querySelector('.announcement-dismiss').addEventListener('click', () => {
+    dismissed = true;
+    try {
+      sessionStorage.setItem(dismissalKey, message);
+    } catch {
+      // The button still hides the bar when browser storage is unavailable.
+    }
+    updateVisibility();
+  });
+  window.addEventListener('pageshow', updateVisibility);
+  updateVisibility();
+}
 
 // --- Form submission handler ---
 async function handleFormSubmit(event) {

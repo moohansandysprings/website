@@ -9,6 +9,16 @@ media_folder: "uploads"
 public_folder: "uploads"
 
 collections:
+  - name: "announcements"
+    label: "Announcements"
+    files:
+      - name: "announcement"
+        label: "Home and Schedule Announcement"
+        file: "content/announcement.json"
+        fields:
+          - { label: "Show announcement", name: "enabled", widget: "boolean", default: false, required: false }
+          - { label: "Message", name: "message", widget: "text", required: false, hint: "Enter the announcement as plain text. Turn off Show announcement when the notice is over, then publish." }
+
   - name: "homepage_images"
     label: "Home Page Images"
     files:
