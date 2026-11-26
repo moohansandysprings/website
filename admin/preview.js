@@ -1,7 +1,7 @@
 // Decap CMS Custom Preview Templates & Styling
 
 CMS.registerPreviewStyle('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Playfair+Display:wght@400;700&display=swap');
-CMS.registerPreviewStyle(new URL('../css/style.css', window.location.href).href);
+CMS.registerPreviewStyle(new URL('../css/style.css?v=89a9b25', window.location.href).href);
 
 CMS.registerPreviewStyle(`
   body {
