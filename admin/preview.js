@@ -1,7 +1,7 @@
 // Decap CMS Custom Preview Templates & Styling
 
 CMS.registerPreviewStyle('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&family=Playfair+Display:wght@400;700&display=swap');
-CMS.registerPreviewStyle('../css/style.css');
+CMS.registerPreviewStyle(new URL('../css/style.css', window.location.href).href);
 
 CMS.registerPreviewStyle(`
   body {
@@ -21,7 +21,8 @@ CMS.registerPreviewStyle(`
     height: auto;
     display: block;
   }
-`);
+  .cms-preview-wrapper .site-header { margin-bottom: 0; }
+`, { raw: true });
 
 var h = window.h || (window.React && window.React.createElement);
 
@@ -39,6 +40,79 @@ function getImgUrl(getAsset, val, fallback) {
   var clean = path.replace(/^\/+/, '');
   var prefix = window.location.pathname.includes('/website/') ? '/website/' : '/';
   return prefix + clean;
+}
+
+// Use the public navigation markup so the preview follows changes to the menu.
+var previewNav;
+function getPreviewNav() {
+  if (!previewNav) {
+    previewNav = fetch('../index.html').then(function(response) {
+      if (!response.ok) throw new Error('Navigation unavailable');
+      return response.text();
+    }).then(function(html) {
+      var nav = new DOMParser().parseFromString(html, 'text/html').querySelector('#navbar');
+      nav.querySelector('img').src = new URL('../uploads/moohan-logo.png', window.location.href).href;
+      return nav;
+    }).catch(function(error) {
+      previewNav = null;
+      throw error;
+    });
+  }
+  return previewNav;
+}
+
+var PreviewHeader = window.createClass({
+  getInitialState: function() {
+    return { published: null, dismissed: null };
+  },
+  componentDidMount: function() {
+    var self = this;
+    getPreviewNav().then(function(nav) {
+      if (self.navHost) self.navHost.appendChild(nav.cloneNode(true));
+    }).catch(function() {});
+    if (this.props.showPublished) {
+      fetch('../content/announcement.json', { cache: 'no-cache' })
+        .then(function(response) { return response.json(); })
+        .then(function(data) { if (self.navHost) self.setState({ published: data }); })
+        .catch(function() {});
+    }
+  },
+  setNavHost: function(node) { this.navHost = node; },
+  handleNavClick: function(event) {
+    var toggle = this.navHost.querySelector('.hamburger');
+    var links = this.navHost.querySelector('.nav-links');
+    if (!toggle || !links) return;
+    event.preventDefault();
+    var open = toggle.contains(event.target) && !links.classList.contains('open');
+    toggle.classList.toggle('active', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    links.classList.toggle('open', open);
+  },
+  render: function() {
+    var data = this.props.draft || this.state.published || {};
+    var message = (data.message || '').trim();
+    var self = this;
+    return h('header', { className: 'site-header' },
+      data.enabled && message && this.state.dismissed !== message
+        ? h('aside', { className: 'announcement-bar', 'aria-label': 'Announcement' },
+            h('div', { className: 'container' },
+              h('p', { className: 'announcement-message' }, message),
+              h('button', { className: 'announcement-dismiss', type: 'button',
+                'aria-label': 'Dismiss announcement',
+                onClick: function() { self.setState({ dismissed: message }); }
+              }, '×')
+            )
+          ) : null,
+      h('div', { ref: this.setNavHost, onClick: this.handleNavClick })
+    );
+  }
+});
+
+function AnnouncementPreview(props) {
+  var data = props.entry.get('data').toJS();
+  return h('div', { className: 'cms-preview-wrapper' },
+    h(PreviewHeader, { draft: data, key: JSON.stringify([data.enabled, data.message]) })
+  );
 }
 
 // 1. Home Page Images Preview
@@ -64,14 +138,7 @@ function HomepagePreview(props) {
   var taekwondoBg = getImgUrl(getAsset, data.taekwondo_background, '../uploads/moohan-masters.webp');
 
   return h('div', { className: 'cms-preview-wrapper' },
-    h('nav', { className: 'navbar', style: { position: 'relative', background: '#1a1a2e' } },
-      h('div', { className: 'container' },
-        h('a', { className: 'nav-brand', href: '#' },
-          h('img', { src: '../uploads/moohan-logo.png', alt: 'Logo', width: 52, height: 52 }),
-          h('div', { className: 'nav-brand-text' }, h('strong', null, 'MOOHAN MARTIAL ARTS'), 'SANDY SPRINGS')
-        )
-      )
-    ),
+    h(PreviewHeader, { showPublished: true }),
     h('section', { className: 'hero', style: { minHeight: '350px', backgroundImage: 'linear-gradient(135deg, rgba(15,15,35,0.85), rgba(26,26,46,0.7)), url("' + heroBg + '")', backgroundSize: 'cover', backgroundPosition: 'center' } },
       h('div', { className: 'hero-content' },
         h('h1', null, 'BEST MARTIAL ARTS IN SANDY SPRINGS'),
@@ -96,13 +163,13 @@ function HomepagePreview(props) {
                   h('svg', { width: '22', height: '22', viewBox: '0 0 24 24', fill: '#ffffff' }, h('path', { d: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z' })),
                   h('span', { style: { fontWeight: '700', fontSize: '15px', letterSpacing: '0.3px', color: '#ffffff' } }, 'Live Facebook Updates')
                 ),
-                h('a', { href: 'https://www.facebook.com/moohansandysprings/', target: '_blank', style: { background: 'rgba(255,255,255,0.22)', color: '#ffffff', padding: '6px 14px', borderRadius: '0', fontSize: '12px', fontWeight: '700', textDecoration: 'none' } }, 'Follow Us ↗')
+                h('a', { href: 'https://www.facebook.com/moohansandysprings/', target: '_blank', style: { background: 'rgba(255,255,255,0.22)', color: '#ffffff', padding: '6px 14px', borderRadius: '0', fontSize: '12px', fontWeight: '700', textDecoration: 'none' } }, 'View on Facebook')
               ),
               h('iframe', {
-                src: 'https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmoohansandysprings%2F&tabs=timeline&width=480&height=600&small_header=true&adapt_container_width=true&hide_cover=true&show_facepile=false&appId',
+                src: 'https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmoohansandysprings%2F&width=500&height=500&small_header=true&hide_cover=true&show_facepile=false&show_posts=true',
                 width: '100%',
-                height: '600',
-                style: { border: 'none', overflow: 'hidden', width: '100%', height: '600px', display: 'block', margin: '0', padding: '0' },
+                height: '500',
+                style: { border: 'none', overflow: 'hidden', width: '100%', height: '500px', display: 'block', margin: '0', padding: '0' },
                 scrolling: 'yes',
                 frameBorder: '0',
                 allowFullScreen: true,
@@ -323,6 +390,7 @@ function SchedulePreview(props) {
   var pdfFile = getImgUrl(getAsset, data.schedule_pdf, '../uploads/schedule.pdf');
 
   return h('div', { className: 'cms-preview-wrapper' },
+    h(PreviewHeader, { showPublished: true }),
     h('section', { style: { padding: '40px 20px', textAlign: 'center', background: '#18182c', color: '#fff' } },
       h('div', { className: 'container' },
         h('h2', { className: 'section-title section-title--light' }, 'Class Schedule'),
@@ -336,6 +404,7 @@ function SchedulePreview(props) {
 }
 
 // Register CMS Preview Templates for both Collection and File keys
+CMS.registerPreviewTemplate('announcement', AnnouncementPreview);
 CMS.registerPreviewTemplate('homepage_images', HomepagePreview);
 CMS.registerPreviewTemplate('site_info', HomepagePreview);
 

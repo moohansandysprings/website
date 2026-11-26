@@ -24,7 +24,7 @@ body {
   line-height: 1.6;
   color: #333;
   background: #fff;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 img {
@@ -130,6 +130,17 @@ h1, h2, h3, h4, h5, h6 {
 .navbar.scrolled {
   background: rgba(15, 15, 35, 0.98);
   box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin-bottom: calc(-1 * var(--nav-height));
+}
+
+.site-header .navbar {
+  position: relative;
 }
 
 .navbar .container {
@@ -278,7 +289,6 @@ h1, h2, h3, h4, h5, h6 {
    ANNOUNCEMENT BAR
    =================================================== */
 .announcement-bar {
-  margin-top: var(--nav-height);
   background: var(--color-accent);
   color: var(--color-dark);
 }
@@ -318,10 +328,6 @@ h1, h2, h3, h4, h5, h6 {
 .announcement-dismiss:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: -3px;
-}
-
-.announcement-bar:not([hidden]) + .page-hero {
-  padding-top: 0;
 }
 
 /* ===================================================

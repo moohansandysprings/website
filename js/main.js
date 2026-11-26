@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const target = document.querySelector(targetId);
       if (target) {
         e.preventDefault();
-        const navHeight = document.getElementById('navbar')?.offsetHeight || 80;
+        const navHeight = (document.querySelector('.site-header') || navbar)?.offsetHeight || 80;
         const top = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
         window.scrollTo({ top, behavior: 'smooth' });
       }
